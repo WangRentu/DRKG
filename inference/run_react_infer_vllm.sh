@@ -21,8 +21,8 @@ source "$ENV_FILE"
 set +a
 
 # 2️⃣ 基本校验
-if [ -z "$API_BASE" ] || [ -z "$MODEL_NAME" ]; then
-    echo "Error: Missing API_BASE or MODEL_NAME in .env"
+if [ -z "$API_BASE" ] || [ -z "$SUMMARY_MODEL_NAME" ]; then
+    echo "Error: Missing API_BASE or SUMMARY_MODEL_NAME in .env"
     exit 1
 fi
 
@@ -47,7 +47,7 @@ python -u run_multi_react.py \
   --dataset "$DATASET" \
   --output "$OUTPUT_PATH" \
   --max_workers "$MAX_WORKERS" \
-  --model "$MODEL_NAME" \
+  --model "$SUMMARY_MODEL_NAME" \
   --temperature "$TEMPERATURE" \
   --presence_penalty "$PRESENCE_PENALTY" \
   --total_splits "${WORLD_SIZE:-1}" \
